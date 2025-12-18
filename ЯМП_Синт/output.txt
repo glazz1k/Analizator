@@ -1,0 +1,134 @@
+                === ХЕШ-ТАБЛИЦА ===
+Тип лексемы     | Лексема         | Индекс
+----------------|-----------------|-------
+INT             | int             | 0
+ID              | main            | 1
+LPAREN          | (               | 2
+RPAREN          | )               | 3
+LBRACE          | {               | 4
+ID              | x               | 5
+COMMA           | ,               | 6
+ID              | y               | 7
+SEMICOLON       | ;               | 8
+DOUBLE          | double          | 9
+ID              | z               | 10
+ID              | a               | 11
+ID              | g               | 12
+ID              | k               | 13
+ID              | l               | 14
+ASSIGN          | =               | 15
+INT_NUM         | 5               | 16
+PLUS            | +               | 17
+INT_NUM         | 2               | 18
+MINUS           | -               | 19
+INT_NUM         | 1               | 20
+DTOI            | dtoi            | 21
+DOUBLE_NUM      | 2.2             | 22
+ITOD            | itod            | 23
+RETURN          | return          | 24
+RBRACE          | }               | 25
+
+Всего уникальных лексем: 26
+
+=== ДЕРЕВО РАЗБОРА ===
+Function
+  Begin
+    Type: int
+    FunctionName: main
+    (
+    )
+    {
+  Descriptions
+    Descr
+      Type: int
+      VarList
+        Id: x
+        ,
+        Id: y
+      ;
+    Descr
+      Type: double
+      VarList
+        Id: z
+      ;
+    Descr
+      Type: int
+      VarList
+        Id: a
+      ;
+    Descr
+      Type: double
+      VarList
+        Id: g
+        ,
+        Id: k
+        ,
+        Id: l
+      ;
+  Operators
+    Op
+      Id: y
+      =
+      Expr
+        SimpleExpr
+          Const: 5 (int)
+        +
+        Expr
+          SimpleExpr
+            (
+            Expr
+              SimpleExpr
+                Const: 2 (int)
+              -
+              Expr
+                SimpleExpr
+                  Const: 1 (int)
+            )
+      ;
+    Op
+      Id: x
+      =
+      Expr
+        SimpleExpr
+          Const: 1 (int)
+        +
+        Expr
+          SimpleExpr
+            dtoi
+            (
+            Expr
+              SimpleExpr
+                Const: 2.2 (double)
+            )
+      ;
+    Op
+      Id: z
+      =
+      Expr
+        SimpleExpr
+          itod
+          (
+          Expr
+            SimpleExpr
+              Const: 2 (int)
+          )
+      ;
+  End
+    return
+    Id: x
+    ;
+    }
+
+=== ПОСТФИКСНАЯ ЗАПИСЬ ===
+int main FUNCTION
+int x y 3 DECL
+double z 2 DECL
+int a 2 DECL
+double g k l 4 DECL
+5 2 1 - + y =
+1 2.2 dtoi + x =
+2 itod z =
+x RETURN
+
+=== РЕЗУЛЬТАТ АНАЛИЗА ===
+Программа корректна!
