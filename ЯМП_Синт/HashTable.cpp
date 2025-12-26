@@ -54,17 +54,18 @@ int HashTable::insert(const Token& token)
     return newEntry->sequentialIndex;   // Возвращаем индекс новой записи
 }
 
-int HashTable::insertWithType(const Token& token, const string& type)   // Вставка с типом
+int HashTable::insertWithType(const Token& token, const string& type)
 {
     string value = token.getValue();
     int index = hashFunction(value);
 
-    HashEntry* current = table[index];      // Проверяем, существует ли уже такая лексема в таблице
+    // Проверяем, существует ли уже такая лексема в таблице
+    HashEntry* current = table[index];
     while (current != nullptr)
     {
         if (current->occupied && current->token.getValue() == value)
         {
-            current->varType = type;        // Обновляем тип, если запись уже существует
+            current->varType = type; // Обновляем тип, если запись уже существует
             return current->sequentialIndex;
         }
         current = current->next;
@@ -74,7 +75,8 @@ int HashTable::insertWithType(const Token& token, const string& type)   // Встав
     HashEntry* newEntry = new HashEntry(token, type);
     newEntry->sequentialIndex = sequentialIndex++;
 
-    if (table[index] == nullptr)        // Вставляем запись в таблицу
+    // Вставляем запись в таблицу
+    if (table[index] == nullptr)
         table[index] = newEntry;
     else
     {

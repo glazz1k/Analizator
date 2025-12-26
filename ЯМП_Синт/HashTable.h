@@ -3,7 +3,6 @@
 
 #include "Token.h"
 #include <fstream>
-#include <vector>
 
 struct HashEntry            // Структура представляет одну запись в хеш-таблице
 {
@@ -50,7 +49,7 @@ public:
         return false;
     }
 
-    string getVariableType(const string& varName) const     // Получение типа переменной
+    string getVariableType(const string& varName) const // Получение типа переменной по имени
     {
         int index = hashFunction(varName);
         HashEntry* current = table[index];

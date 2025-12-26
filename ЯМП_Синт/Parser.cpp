@@ -1233,7 +1233,7 @@ void Parser::checkAssignmentType(const string& varName, const string& exprType) 
 {
     string varType = getVariableType(varName);
     if (varType.empty())
-        return;
+        return; // Переменная не найдена
 
     // Сравниваем тип переменной (левая часть присваивания) с типом выражения (правая часть присваивания)
     if (varType != exprType)
@@ -1248,7 +1248,7 @@ void Parser::checkAssignmentType(const string& varName, const string& exprType) 
 void Parser::checkFunctionReturnType(const string& returnVar)
 {
     string returnType = getVariableType(returnVar);
-    if (returnType.empty())   // Проверяем, объявлена ли переменная
+    if (returnType.empty())
     {
         string errorMsg = "строка " + to_string(currentToken.getLine()) +
             ": переменная возврата '" + returnVar + "' не объявлена";
@@ -1290,10 +1290,10 @@ void Parser::generatePostfix()
         return;
     }
 
-    if (!currentFunctionType.empty() && !currentFunctionName.empty())
+    /*if (!currentFunctionType.empty() && !currentFunctionName.empty())
         output << currentFunctionType << " " << currentFunctionName << " FUNCTION" << endl;
     else
-        output << "unknown unknown FUNCTION" << endl;
+        output << "unknown unknown FUNCTION" << endl;*/
 
     vector<string> currentLine; // Вектор для накопления токенов текущей строки вывода
     bool inDeclaration = false; // Флаг, указывающий, что мы находимся внутри объявления переменных

@@ -2,7 +2,7 @@ int main() {
     int x, y;
     double z;
     int a;
-    double g, k, l;
+    double k, l, m, r;
     y = 5 + (2 - 1);
     x = 1 + dtoi(2.2);
     z = itod(2);

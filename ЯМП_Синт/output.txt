@@ -13,22 +13,23 @@ SEMICOLON       | ;               | 8
 DOUBLE          | double          | 9
 ID              | z               | 10
 ID              | a               | 11
-ID              | g               | 12
-ID              | k               | 13
-ID              | l               | 14
-ASSIGN          | =               | 15
-INT_NUM         | 5               | 16
-PLUS            | +               | 17
-INT_NUM         | 2               | 18
-MINUS           | -               | 19
-INT_NUM         | 1               | 20
-DTOI            | dtoi            | 21
-DOUBLE_NUM      | 2.2             | 22
-ITOD            | itod            | 23
-RETURN          | return          | 24
-RBRACE          | }               | 25
+ID              | k               | 12
+ID              | l               | 13
+ID              | m               | 14
+ID              | r               | 15
+ASSIGN          | =               | 16
+INT_NUM         | 5               | 17
+PLUS            | +               | 18
+INT_NUM         | 2               | 19
+MINUS           | -               | 20
+INT_NUM         | 1               | 21
+DTOI            | dtoi            | 22
+DOUBLE_NUM      | 2.2             | 23
+ITOD            | itod            | 24
+RETURN          | return          | 25
+RBRACE          | }               | 26
 
-Всего уникальных лексем: 26
+Всего уникальных лексем: 27
 
 === ДЕРЕВО РАЗБОРА ===
 Function
@@ -59,11 +60,13 @@ Function
     Descr
       Type: double
       VarList
-        Id: g
-        ,
         Id: k
         ,
         Id: l
+        ,
+        Id: m
+        ,
+        Id: r
       ;
   Operators
     Op
@@ -120,11 +123,10 @@ Function
     }
 
 === ПОСТФИКСНАЯ ЗАПИСЬ ===
-int main FUNCTION
 int x y 3 DECL
 double z 2 DECL
 int a 2 DECL
-double g k l 4 DECL
+double k l m r 5 DECL
 5 2 1 - + y =
 1 2.2 dtoi + x =
 2 itod z =

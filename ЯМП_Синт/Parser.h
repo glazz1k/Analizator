@@ -67,8 +67,9 @@ public:
     void completeExpression();
     void checkFunctionArgumentType(const string& funcName, const string& argType);
     void checkBinaryOperationTypes(const string& leftType, const string& rightType, const string& op);
-    void addToPostfix(const string& token);
 
+    // Методы для работы с постфиксной записью
+    void addToPostfix(const string& token);
     string getVariableType(const string& varName) const
     {
         return declaredVariables->getVariableType(varName);
